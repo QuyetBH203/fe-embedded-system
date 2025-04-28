@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
     if (regex.test(message)) {
       const response = await getHealthMetrics();
       //   console.log('Health metrics response:', response.heart);
-      const newMessage = `heart: ${response.heart} spo2:${response.temp} tmp: ${response.temp} phân tích tình trạng sức khỏe của bạn dựa trên các chỉ số này.`;
+      const newMessage = `heart: ${response.heart} spo2:${response.spo2} tmp: ${response.temp} phân tích tình trạng sức khỏe của bạn dựa trên các chỉ số này.`;
       currentMessage = {
         role: 'user',
         parts: [{ text: newMessage }],
