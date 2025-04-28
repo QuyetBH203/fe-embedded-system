@@ -47,3 +47,14 @@ export interface IMotionCount {
   motion_count: number;
   timestamp: string;
 }
+
+export interface IHealthMetricsResponse {
+  message: string;
+  data: IHealthMetrics;
+}
+
+export interface IHealthMetrics {
+  heart: number;
+  spoe2: number;
+  temp: number;
+}

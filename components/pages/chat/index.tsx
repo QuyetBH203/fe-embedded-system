@@ -22,7 +22,7 @@ export default function ChatPage() {
     {
       id: '1',
       role: 'assistant',
-      content: 'Xin chào! Tôi là chatbot AI. Tôi có thể giúp gì cho bạn?',
+      content: 'Xin chào! Tôi là chatbot AI về sức khỏe. Tôi có thể giúp gì cho bạn?',
       timestamp: new Date(),
     },
   ]);
@@ -47,29 +47,17 @@ export default function ChatPage() {
     setIsLoading(true);
 
     try {
-      // Ở đây bạn sẽ gọi API của chatbot
-      // Đây là mô phỏng gọi API
-      setTimeout(async () => {
-        const botResponse: Message = {
-          id: (Date.now() + 1).toString(),
-          role: 'assistant',
-          content: `Tôi đã nhận được tin nhắn của bạn: "${userMessage.content}". Đây là phản hồi từ chatbot AI.`,
-          timestamp: new Date(),
-        };
-        setMessages((prev) => [...prev, botResponse]);
-        setIsLoading(false);
-      }, 1000);
+      // Gọi API chat với Gemini
+      setIsLoading(true);
 
-      // Khi bạn tích hợp API thực, hãy thay đoạn code trên bằng đoạn code dưới đây:
-      /*
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          message: inputValue,
-          history: messages
+          message: userMessage.content,
+          history: messages,
         }),
       });
 
@@ -78,7 +66,7 @@ export default function ChatPage() {
       }
 
       const data = await response.json();
-      
+
       const botResponse: Message = {
         id: Date.now().toString(),
         role: 'assistant',
@@ -87,7 +75,6 @@ export default function ChatPage() {
       };
 
       setMessages((prev) => [...prev, botResponse]);
-      */
     } catch (error) {
       console.error('Error sending message:', error);
       // Hiển thị tin nhắn lỗi
@@ -131,7 +118,7 @@ export default function ChatPage() {
   return (
     <div className="flex flex-col h-screen max-h-screen overflow-hidden w-full bg-background p-4">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold">AI Chat Assistant</h1>
+        <h1 className="text-2xl font-bold uppercase">health consulting bot</h1>
         <Button variant="outline" size="icon" onClick={clearChat} title="Xóa cuộc trò chuyện">
           <Trash2 className="h-5 w-5" />
         </Button>
@@ -139,7 +126,7 @@ export default function ChatPage() {
 
       <Card className="flex-grow overflow-hidden">
         <CardContent className="p-4 h-full flex flex-col">
-          <ScrollArea className="flex-grow pr-4">
+          <ScrollArea className="flex-grow pr-4 max-h-screen overflow-y-auto">
             <div className="space-y-4">
               {messages.map((message) => (
                 <div
@@ -207,7 +194,7 @@ export default function ChatPage() {
 
           <div className="mt-4 flex gap-2">
             <Textarea
-              placeholder="Nhập tin nhắn của bạn..."
+              placeholder="ASK ME ANYTHING ABOUT HEALTH..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={handleKeyDown}

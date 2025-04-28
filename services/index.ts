@@ -1,4 +1,4 @@
-import { IHearResponse, ITempResponse } from '@/types/device';
+import { IHealthMetricsResponse, IHearResponse, ITempResponse } from '@/types/device';
 import { axiosInstance } from '@/utils/axios';
 
 export const getHearRate = async () => {
@@ -21,4 +21,9 @@ export const getMotion = async () => {
 export const getMotionCount = async () => {
   const response = await axiosInstance.get(`/iot-data/motion-count`);
   return response;
+};
+
+export const getHealthMetrics = async () => {
+  const response = await axiosInstance.get<any>(`/iot-data/vitals-temperature`);
+  return response.data;
 };
