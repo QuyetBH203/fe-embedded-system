@@ -1,0 +1,23 @@
+# Ignore build and output directories
+.next
+out
+build
+dist
+
+# Ignore node_modules
+node_modules
+
+# Ignore package files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore public assets
+public
+
+# Ignore coverage reports
+coverage
+
+# Misc
+.DS_Store
+*.pem
