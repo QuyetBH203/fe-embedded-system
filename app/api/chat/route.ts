@@ -1,7 +1,6 @@
 import { GoogleGenAI } from '@google/genai';
 import { GEMINI_API_KEY } from '@/constants';
 import { NextRequest, NextResponse } from 'next/server';
-import { get } from 'http';
 import { getHealthMetrics } from '@/services';
 
 // Initialize GoogleGenAI instance
