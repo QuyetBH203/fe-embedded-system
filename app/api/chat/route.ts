@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
       }))
       .slice(-10);
 
-    const regex = /tình trạng sức khỏe/i;
+    const regex = /tình trạng sức khỏe|hôm nay tôi như thế nào|tôi như thế nào/i;
     let currentMessage = null;
     if (regex.test(message)) {
       const response = await getHealthMetrics();

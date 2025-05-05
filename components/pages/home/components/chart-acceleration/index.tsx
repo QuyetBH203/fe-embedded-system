@@ -21,14 +21,7 @@ import { useEffect } from 'react';
 import { queryClient } from '@/providers/react-query';
 import { useQuery } from '@tanstack/react-query';
 import { getMotion } from '@/services';
-const chartData = [
-  { month: 'January', desktop: 186, mobile: 80 },
-  { month: 'February', desktop: 305, mobile: 200 },
-  { month: 'March', desktop: 237, mobile: 120 },
-  { month: 'April', desktop: 73, mobile: 190 },
-  { month: 'May', desktop: 209, mobile: 130 },
-  { month: 'June', desktop: 214, mobile: 140 },
-];
+
 const formatTimestamp = (timestamp: string) => {
   const date = new Date(timestamp);
   return `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
@@ -179,10 +172,10 @@ export function Chart3() {
         <div className="flex w-full items-start gap-2 text-sm">
           <div className="grid gap-2">
             <div className="flex items-center gap-2 font-medium leading-none">
-              Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+              Real time monitoring <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              Showing total visitors for the last 6 months
+              Showing total metrics data
             </div>
           </div>
         </div>
